@@ -147,14 +147,6 @@ src/
 - **Loading animations** con Framer Motion
 - **Scroll animations** para mejor UX
 
-## 🤝 Contribución
-
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
 ## 📄 Licencia
 
 Este proyecto es propiedad de Movida Deportiva TV. Todos los derechos reservados.
@@ -170,16 +162,6 @@ Este proyecto es propiedad de Movida Deportiva TV. Todos los derechos reservados
 - 🐦 Twitter: [@movidadeportiv](https://x.com/movidadeportiv)
 - 📺 YouTube: [@movidadeportivatv](https://www.youtube.com/@movidadeportivatv)
 - 🎵 TikTok: [@movidadeportivatv](https://www.tiktok.com/@movidadeportivatv)
-
-## 🎯 Roadmap
-
-- [ ] Integración con sistema de autenticación
-- [ ] Panel de administración
-- [ ] Blog de noticias deportivas
-- [ ] Sistema de reservas online
-- [ ] Integración con plataformas de pago
-- [ ] App móvil nativa
-- [ ] Sistema de notificaciones push
 
 ---
 
