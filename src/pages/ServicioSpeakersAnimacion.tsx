@@ -1,17 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { 
   FiMic, FiUsers, FiMusic, FiZap, FiCheckCircle, FiSpeaker,
   FiHeart, FiStar, FiActivity, FiSmile, FiAward
 } from 'react-icons/fi';
 import Footer from '../components/Footer';
-import type { PageType } from '../types';
 
-interface ServicioSpeakersAnimacionProps {
-  onNavigate?: (page: PageType) => void;
-}
+interface ServicioSpeakersAnimacionProps {}
 
-const ServicioSpeakersAnimacion: React.FC<ServicioSpeakersAnimacionProps> = ({ onNavigate }) => {
+const ServicioSpeakersAnimacion: React.FC<ServicioSpeakersAnimacionProps> = () => {
   const serviciosIncluidos = [
     {
       title: "Presentación de Equipos",
@@ -364,17 +362,21 @@ const ServicioSpeakersAnimacion: React.FC<ServicioSpeakersAnimacionProps> = ({ o
             >
               Nuestros speakers profesionales crearán la atmósfera perfecta para que tu evento deportivo sea inolvidable.
             </motion.p>
-            <motion.button
-              className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-8 py-4 rounded-full font-semibold hover:from-green-600 hover:to-emerald-600 transition-all duration-300 shadow-lg hover:shadow-xl text-lg"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 3.6, duration: 0.6 }}
-              onClick={() => onNavigate && onNavigate('contacto')}
             >
-              Solicitar Información
-            </motion.button>
+              <Link to="/contacto">
+                <motion.button
+                  className="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-8 py-4 rounded-full font-semibold hover:from-green-600 hover:to-emerald-600 transition-all duration-300 shadow-lg hover:shadow-xl text-lg"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Solicitar Información
+                </motion.button>
+              </Link>
+            </motion.div>
           </div>
         </motion.section>
       </div>

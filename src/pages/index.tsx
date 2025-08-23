@@ -284,8 +284,8 @@ const Index: React.FC<IndexProps> = () => {
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">Speakers y Animación</h3>
                 <p className="text-slate-300 text-sm leading-relaxed mb-4">
-                  Servicios de <strong className="text-green-400">locución profesional</strong> 
-                  y animación para dar vida a tus eventos con energía y profesionalismo.
+                  Servicios de <strong className="text-green-400">locución profesional </strong> 
+                   y animación para dar vida a tus eventos con energía y profesionalismo.
                 </p>
                 <Link to="/servicios/speakers-animacion">
                   <motion.button

@@ -484,54 +484,6 @@ const Conocenos: React.FC<ConocenosProps> = () => {
             ))}
           </motion.div>
         </motion.section>
-
-        {/* Call to Action */}
-        <motion.section 
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.6, duration: 0.8 }}
-        >
-          <div className="bg-gradient-to-br from-teal-900/30 to-cyan-900/30 backdrop-blur-sm rounded-3xl p-12 border border-teal-700/50">
-            <motion.h3 
-              className="text-3xl font-bold text-white mb-4"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.8, duration: 0.6 }}
-            >
-              ¿Listo para trabajar con nosotros?
-            </motion.h3>
-            <motion.p 
-              className="text-xl text-slate-300 mb-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 2.0, duration: 0.6 }}
-            >
-              Estamos aquí para hacer realidad tu proyecto audiovisual
-            </motion.p>
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2.2, duration: 0.6 }}
-            >
-              <motion.button
-                className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white px-8 py-3 rounded-full font-semibold hover:from-teal-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-xl"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Solicitar Presupuesto
-              </motion.button>
-              <motion.button
-                className="bg-transparent border-2 border-teal-400 text-teal-400 px-8 py-3 rounded-full font-semibold hover:bg-teal-400 hover:text-white transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Ver Nuestro Trabajo
-              </motion.button>
-            </motion.div>
-          </div>
-        </motion.section>
       </div>
       
       {/* Footer */}

@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
+import ScrollToTop from './components/ScrollToTop'
 import Index from './pages'
 import Conocenos from './pages/Conocenos'
 import ServicioStreaming from './pages/ServicioStreaming'
@@ -39,6 +40,7 @@ const AppContent = () => {
 
 	return (
 		<div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
+			<ScrollToTop />
 			<Navbar currentPage={currentPage} />
 			<Routes>
 				<Route path="/" element={<Index />} />

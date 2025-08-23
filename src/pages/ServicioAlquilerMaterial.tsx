@@ -1,17 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { 
   FiCamera, FiMic, FiRadio, FiSettings, FiCheckCircle, FiTool,
   FiMonitor, FiZap, FiShield, FiClock, FiVideo, FiHeadphones
 } from 'react-icons/fi';
 import Footer from '../components/Footer';
-import type { PageType } from '../types';
 
-interface ServicioAlquilerMaterialProps {
-  onNavigate?: (page: PageType) => void;
-}
+interface ServicioAlquilerMaterialProps {}
 
-const ServicioAlquilerMaterial: React.FC<ServicioAlquilerMaterialProps> = ({ onNavigate }) => {
+const ServicioAlquilerMaterial: React.FC<ServicioAlquilerMaterialProps> = () => {
   const equiposIncluidos = [
     {
       title: "Cámaras HD/4K",
@@ -354,17 +352,21 @@ const ServicioAlquilerMaterial: React.FC<ServicioAlquilerMaterialProps> = ({ onN
             >
               Confía en MOVIDA DEPORTIVA TV para el alquiler de material que garantiza una retransmisión en directo de calidad profesional.
             </motion.p>
-            <motion.button
-              className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full font-semibold hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-xl text-lg"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 3.6, duration: 0.6 }}
-              onClick={() => onNavigate && onNavigate('contacto')}
             >
-              Solicitar Información
-            </motion.button>
+              <Link to="/contacto">
+                <motion.button
+                  className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full font-semibold hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-xl text-lg"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Solicitar Información
+                </motion.button>
+              </Link>
+            </motion.div>
           </div>
         </motion.section>
       </div>

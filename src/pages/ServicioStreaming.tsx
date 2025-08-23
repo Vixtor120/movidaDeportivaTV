@@ -1,17 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { 
   FiPlay, FiMonitor, FiMic, FiUsers, FiSettings,
   FiVideo, FiRadio, FiTv, FiCamera, FiEdit3, FiCheckCircle
 } from 'react-icons/fi';
 import Footer from '../components/Footer';
-import type { PageType } from '../types';
 
-interface ServicioStreamingProps {
-  onNavigate?: (page: PageType) => void;
-}
+interface ServicioStreamingProps {}
 
-const ServicioStreaming: React.FC<ServicioStreamingProps> = ({ onNavigate }) => {
+const ServicioStreaming: React.FC<ServicioStreamingProps> = () => {
   const serviciosIncluidos = [
     {
       title: "Retransmisión del Partido",
@@ -288,17 +286,21 @@ const ServicioStreaming: React.FC<ServicioStreamingProps> = ({ onNavigate }) => 
             >
               En MOVIDA DEPORTIVA TV, nos apasiona el deporte y estamos dedicados a ofrecer retransmisiones de la más alta calidad.
             </motion.p>
-            <motion.button
-              className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white px-8 py-4 rounded-full font-semibold hover:from-teal-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-xl text-lg"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 3.0, duration: 0.6 }}
-              onClick={() => onNavigate && onNavigate('contacto')}
             >
-              Contáctanos Ahora
-            </motion.button>
+              <Link to="/contacto">
+                <motion.button
+                  className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white px-8 py-4 rounded-full font-semibold hover:from-teal-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-xl text-lg"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Contáctanos Ahora
+                </motion.button>
+              </Link>
+            </motion.div>
           </div>
         </motion.section>
       </div>

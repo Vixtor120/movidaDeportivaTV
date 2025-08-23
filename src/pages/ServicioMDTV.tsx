@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { 
   FiTv, FiUsers, FiCalendar, FiStar, FiExternalLink,
   FiVideo, FiRadio
@@ -324,6 +325,48 @@ const ServicioMDTV: React.FC<ServicioMDTVProps> = () => {
                 Visitar Canal de Twitch
                 <FiExternalLink className="w-5 h-5" />
               </motion.a>
+            </motion.div>
+          </div>
+        </motion.section>
+
+        {/* Call to Action */}
+        <motion.section 
+          className="text-center mb-20"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 3.8, duration: 0.8 }}
+        >
+          <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 backdrop-blur-sm rounded-3xl p-12 border border-purple-700/50">
+            <motion.h3 
+              className="text-3xl font-bold text-white mb-4"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 4.0, duration: 0.6 }}
+            >
+              ¿Quieres que tu evento aparezca en MDTV?
+            </motion.h3>
+            <motion.p 
+              className="text-xl text-slate-300 mb-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 4.2, duration: 0.6 }}
+            >
+              Contacta con nosotros para solicitar la retransmisión de tu evento deportivo en nuestro canal.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 4.4, duration: 0.6 }}
+            >
+              <Link to="/contacto">
+                <motion.button
+                  className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-full font-semibold hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg hover:shadow-xl text-lg"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Solicitar Cobertura
+                </motion.button>
+              </Link>
             </motion.div>
           </div>
         </motion.section>
