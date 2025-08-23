@@ -1,0 +1,1 @@
+export type PageType = 'inicio' | 'conocenos' | 'servicios' | 'contacto' | 'servicio-streaming' | 'servicio-mdtv' | 'servicio-alquiler-material' | 'servicio-speakers-animacion' | 'politica-privacidad' | 'terminos-servicio' | 'error';
