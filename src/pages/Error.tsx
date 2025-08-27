@@ -29,7 +29,7 @@ const Error: React.FC<ErrorProps> = ({
     : 'La página que buscas no existe o ha sido movida. Por favor, vuelve al inicio.';
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-56">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-40 sm:pt-48 md:pt-52 lg:pt-56">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Error Section */}

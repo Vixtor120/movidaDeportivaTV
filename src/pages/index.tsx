@@ -8,17 +8,17 @@ interface IndexProps {
 
 const Index: React.FC<IndexProps> = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-54">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-48 sm:pt-52 md:pt-56 lg:pt-60">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Hero Section - Mejorado con imágenes */}
         <motion.section 
-          className="mb-20"
+          className="mb-16 sm:mb-20"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             
             {/* Contenido principal */}
             <motion.div 
@@ -28,7 +28,7 @@ const Index: React.FC<IndexProps> = () => {
               transition={{ delay: 0.2, duration: 0.8 }}
             >
               <motion.h1 
-                className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white mb-4"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white mb-4"
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.8 }}
@@ -36,7 +36,7 @@ const Index: React.FC<IndexProps> = () => {
                 <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">Movida Deportiva TV</span>
               </motion.h1>
               <motion.h2 
-                className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-slate-300 mb-4"
+                className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-slate-300 mb-4"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
@@ -44,7 +44,7 @@ const Index: React.FC<IndexProps> = () => {
                 Producción Audiovisual & Retransmisiones en Vivo
               </motion.h2>
               <motion.p 
-                className="text-lg text-slate-400 mb-8 max-w-lg mx-auto lg:mx-0"
+                className="text-base sm:text-lg text-slate-400 mb-6 sm:mb-8 max-w-lg mx-auto lg:mx-0 px-4 sm:px-0"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6, duration: 0.8 }}

@@ -67,7 +67,7 @@ const Conocenos: React.FC<ConocenosProps> = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-32">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-40 sm:pt-48 md:pt-52 lg:pt-56">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Hero Section */}

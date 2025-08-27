@@ -12,12 +12,14 @@ import {
   FiCheckCircle,
   FiInstagram,
   FiYoutube,
-  FiInfo
+  FiInfo,
+  FiAlertCircle
 } from 'react-icons/fi';
 import { RiTwitterXFill } from 'react-icons/ri';
 import { FaTiktok } from 'react-icons/fa';
 import { SiTwitch } from 'react-icons/si';
 import Footer from '../components/Footer';
+import EmailService from '../services/emailService';
 
 interface ContactoProps {
   // Mantenemos por compatibilidad pero no se usa ya que usamos React Router
@@ -52,6 +54,8 @@ const Contacto: React.FC<ContactoProps> = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showError, setShowError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [autoSaveStatus, setAutoSaveStatus] = useState<'saving' | 'saved' | null>(null);
 
   // AutoSave functionality
@@ -178,40 +182,60 @@ const Contacto: React.FC<ContactoProps> = () => {
       return;
     }
 
+    // 🔧 Verificar si EmailJS está configurado
+    if (!EmailService.isConfigured()) {
+      setErrorMessage('El servicio de email no está configurado. Por favor, contacta al administrador.');
+      setShowError(true);
+      setTimeout(() => setShowError(false), 5000);
+      return;
+    }
+
     setIsSubmitting(true);
+    setShowError(false);
+    setErrorMessage('');
     
     try {
-      // Aquí iría la lógica de envío del formulario
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // 📧 Enviar email usando EmailService
+      const emailSent = await EmailService.sendContactForm(formData);
       
-      localStorage.removeItem('contactForm');
-      setShowSuccess(true);
-      setFormData({
-        nombre: '',
-        email: '',
-        telefono: '',
-        empresa: '',
-        servicios: [],
-        tipoEvento: '',
-        fechaEvento: '',
-        presupuesto: '',
-        mensaje: '',
-        aceptaTerminos: false
-      });
-      
-      setTimeout(() => setShowSuccess(false), 5000);
+      if (emailSent) {
+        // ✅ Éxito - limpiar formulario y mostrar mensaje
+        localStorage.removeItem('contactForm');
+        setShowSuccess(true);
+        setFormData({
+          nombre: '',
+          email: '',
+          telefono: '',
+          empresa: '',
+          servicios: [],
+          tipoEvento: '',
+          fechaEvento: '',
+          presupuesto: '',
+          mensaje: '',
+          aceptaTerminos: false
+        });
+        
+        setTimeout(() => setShowSuccess(false), 5000);
+      } else {
+        // ❌ Error al enviar
+        throw new Error('No se pudo enviar el email');
+      }
     } catch (error) {
       console.error('Error al enviar formulario:', error);
-      alert('Error al enviar el formulario. Por favor, intenta de nuevo.');
+      setErrorMessage(
+        'Error al enviar el formulario. Por favor, intenta de nuevo o contacta directamente por email.'
+      );
+      setShowError(true);
+      setTimeout(() => setShowError(false), 8000);
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-56">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-48 sm:pt-52 md:pt-56 lg:pt-60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16">
           
           {/* Formulario de Contacto */}
           <motion.div 
@@ -221,9 +245,9 @@ const Contacto: React.FC<ContactoProps> = () => {
             transition={{ duration: 0.8 }}
           >
             {/* Header */}
-            <div className="text-center mb-12">
+            <div className="text-center mb-8 lg:mb-12">
               <motion.h1 
-                className="text-5xl md:text-6xl font-black text-white mb-6"
+                className="text-4xl sm:text-5xl md:text-6xl font-black text-white mb-4 lg:mb-6"
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
@@ -235,7 +259,7 @@ const Contacto: React.FC<ContactoProps> = () => {
               </motion.h1>
               
               <motion.p 
-                className="text-xl text-slate-400 max-w-3xl mx-auto"
+                className="text-lg sm:text-xl text-slate-400 max-w-3xl mx-auto px-2"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
@@ -261,13 +285,13 @@ const Contacto: React.FC<ContactoProps> = () => {
             {/* Formulario */}
             <motion.form 
               onSubmit={handleSubmit}
-              className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm p-8 rounded-3xl border border-slate-700/30 shadow-2xl"
+              className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-3xl border border-slate-700/30 shadow-2xl"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
               {/* Información Personal */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
                 <div>
                   <label className="block text-white font-semibold mb-2">
                     Nombre Completo *
@@ -335,17 +359,17 @@ const Contacto: React.FC<ContactoProps> = () => {
               </div>
 
               {/* Servicios */}
-              <div className="mb-8">
-                <div className="mb-6">
-                  <h3 className="text-2xl font-bold text-white mb-2">
+              <div className="mb-6 sm:mb-8">
+                <div className="mb-4 sm:mb-6">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
                     ¿Qué servicios te interesan? *
                   </h3>
-                  <p className="text-slate-400">
+                  <p className="text-slate-400 text-sm sm:text-base">
                     Selecciona uno o varios servicios para recibir información personalizada
                   </p>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2">
                   {serviciosDisponibles.map((servicio, index) => (
                     <motion.div 
                       key={servicio.id} 
@@ -436,7 +460,7 @@ const Contacto: React.FC<ContactoProps> = () => {
               </div>
 
               {/* Detalles del Evento */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
                 <div>
                   <label className="block text-white font-semibold mb-2">
                     Tipo de Evento
@@ -492,7 +516,7 @@ const Contacto: React.FC<ContactoProps> = () => {
               </div>
 
               {/* Mensaje */}
-              <div className="mb-8">
+              <div className="mb-6 sm:mb-8">
                 <label className="block text-white font-semibold mb-2">
                   Mensaje Adicional
                 </label>
@@ -510,7 +534,7 @@ const Contacto: React.FC<ContactoProps> = () => {
               </div>
 
               {/* Términos y Condiciones */}
-              <div className="mb-8">
+              <div className="mb-6 sm:mb-8">
                 <label className="flex items-start gap-3 cursor-pointer group">
                   <input
                     type="checkbox"
@@ -584,6 +608,28 @@ const Contacto: React.FC<ContactoProps> = () => {
                   </motion.div>
                 )}
               </AnimatePresence>
+
+              {/* Mensaje de Error */}
+              <AnimatePresence>
+                {showError && (
+                  <motion.div
+                    className="mt-6 p-4 bg-red-500/20 border border-red-500/50 rounded-xl flex items-center gap-3"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                  >
+                    <FiAlertCircle className="w-6 h-6 text-red-400" />
+                    <div>
+                      <div className="text-red-400 font-semibold">
+                        Error al enviar la solicitud
+                      </div>
+                      <div className="text-red-300 text-sm">
+                        {errorMessage}
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.form>
           </motion.div>
 
@@ -594,13 +640,13 @@ const Contacto: React.FC<ContactoProps> = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="sticky top-32">
-              <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm p-8 rounded-3xl border border-slate-700/30 shadow-2xl">
-                <h3 className="text-2xl font-bold text-white mb-6">
+            <div className="lg:sticky lg:top-32">
+              <div className="bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-3xl border border-slate-700/30 shadow-2xl">
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">
                   Información de Contacto
                 </h3>
                 
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full flex items-center justify-center">
                       <FiMail className="w-6 h-6 text-white" />
@@ -632,9 +678,9 @@ const Contacto: React.FC<ContactoProps> = () => {
                   </div>
                 </div>
 
-                <div className="mt-8 pt-8 border-t border-slate-700">
+                <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-slate-700">
                   <h4 className="text-lg font-semibold text-white mb-4">Síguenos</h4>
-                  <div className="flex gap-4">
+                  <div className="flex flex-wrap gap-3 sm:gap-4">
                     <a href="https://instagram.com/movidadeportivatv" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300">
                       <FiInstagram className="w-5 h-5 text-white" />
                     </a>
