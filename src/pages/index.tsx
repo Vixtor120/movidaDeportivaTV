@@ -397,14 +397,10 @@ const Index: React.FC<IndexProps> = () => {
             >
               <h3 className="text-2xl font-bold text-white mb-6">Nuestra Historia</h3>
               <p className="text-slate-300 leading-relaxed mb-4">
-                En Movida Deportiva TV, somos un equipo creativo especializado en la 
-                <strong className="text-teal-400"> producción audiovisual</strong>, apasionado por dar vida 
-                a ideas a través de imágenes y sonido.
+                Movida Deportiva TV nació de la pasión por el deporte y la tecnología audiovisual. Lo que comenzó como un proyecto para documentar eventos locales, se ha convertido en una empresa especializada en streaming profesional y producción audiovisual deportiva.
               </p>
               <p className="text-slate-300 leading-relaxed mb-6">
-                Desde nuestros inicios, hemos trabajado en proyectos innovadores que abarcan desde 
-                <strong className="text-cyan-400"> cine, televisión y comerciales</strong>, hasta contenido 
-                digital para plataformas.
+                Hemos crecido colaborando con equipos, federaciones y organizaciones que comparten nuestra visión: llevar el deporte a más personas a través de contenido de alta calidad.
               </p>
               
               {/* Nuestra misión resumida */}
