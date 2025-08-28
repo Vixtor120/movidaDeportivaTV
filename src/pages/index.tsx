@@ -353,14 +353,14 @@ const Index: React.FC<IndexProps> = () => {
           </motion.div>
         </motion.section>
 
-        {/* Sección Conócenos - Más detallada */}
+        {/* Sección Conócenos - Diseño moderno y sencillo */}
         <motion.section
-          className="mb-16"
+          className="mb-20"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.0, duration: 0.8 }}
         >
-          {/* Título Principal */}
+          {/* Título Principal - Minimalista */}
           <motion.div 
             className="text-center mb-16"
             initial={{ opacity: 0, scale: 0.9 }}
@@ -368,7 +368,7 @@ const Index: React.FC<IndexProps> = () => {
             transition={{ delay: 2.2, duration: 0.6 }}
           >
             <motion.h2 
-              className="text-4xl md:text-5xl font-black text-white mb-4"
+              className="text-4xl md:text-5xl font-black text-white mb-6"
               initial={{ opacity: 0, y: -30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 2.4, duration: 0.6 }}
@@ -385,139 +385,153 @@ const Index: React.FC<IndexProps> = () => {
             </motion.p>
           </motion.div>
 
-          {/* Contenido principal */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
+          {/* Contenido principal - Layout limpio */}
+          <div className="max-w-6xl mx-auto space-y-12">
             
-            {/* Información sobre la empresa */}
-            <motion.div 
-              className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 shadow-2xl border border-slate-700"
-              initial={{ opacity: 0, x: -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 2.8, duration: 0.7 }}
-            >
-              <h3 className="text-2xl font-bold text-white mb-6">Nuestra Historia</h3>
-              <p className="text-slate-300 leading-relaxed mb-4">
-                Movida Deportiva TV nació de la pasión por el deporte y la tecnología audiovisual. Lo que comenzó como un proyecto para documentar eventos locales, se ha convertido en una empresa especializada en streaming profesional y producción audiovisual deportiva.
-              </p>
-              <p className="text-slate-300 leading-relaxed mb-6">
-                Hemos crecido colaborando con equipos, federaciones y organizaciones que comparten nuestra visión: llevar el deporte a más personas a través de contenido de alta calidad.
-              </p>
+            {/* Primera fila - Historia y Distinguidos */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               
-              {/* Nuestra misión resumida */}
-              <div className="bg-slate-700/30 rounded-xl p-4 border border-slate-600/50">
-                <h4 className="text-lg font-semibold text-white mb-2">Nuestra Misión</h4>
-                <p className="text-slate-400 text-sm">
-                  Transformar conceptos en experiencias visuales únicas, fusionando tecnología avanzada 
-                  con narrativas cautivadoras.
-                </p>
-              </div>
-            </motion.div>
+              {/* Nuestra Historia - Con misión incluida */}
+              <motion.div 
+                className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 hover:border-teal-500/30 transition-all duration-300"
+                initial={{ opacity: 0, x: -40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 2.8, duration: 0.7 }}
+                whileHover={{ y: -4 }}
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-xl flex items-center justify-center shadow-lg">
+                    <span className="text-xl">📖</span>
+                  </div>
+                  <h3 className="text-3xl font-black text-white bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
+                    Nuestra Historia
+                  </h3>
+                </div>
+                
+                <div className="space-y-4 text-slate-300 leading-relaxed">
+                  <p>
+                    Movida Deportiva TV nació de la pasión por el deporte y la tecnología audiovisual. Lo que comenzó como un proyecto para documentar eventos locales, se ha convertido en una empresa especializada en streaming profesional y producción audiovisual deportiva.
+                  </p>
+                  <p>
+                    Hemos crecido colaborando con equipos, federaciones y organizaciones que comparten nuestra visión: llevar el deporte a más personas a través de contenido de alta calidad.
+                  </p>
+                </div>
 
-            {/* Qué nos distingue */}
+                {/* Nuestra Misión dentro de Historia */}
+                <div className="mt-8 bg-gradient-to-r from-slate-700/40 to-slate-600/40 backdrop-blur-sm rounded-xl p-6 border border-slate-600/30">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-lg flex items-center justify-center shadow-md">
+                      <span className="text-lg">🎯</span>
+                    </div>
+                    <h4 className="text-xl font-bold text-white bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
+                      Nuestra Misión
+                    </h4>
+                  </div>
+                  <p className="text-slate-300 leading-relaxed">
+                    Transformar conceptos en experiencias visuales únicas, fusionando tecnología avanzada 
+                    con narrativas cautivadoras.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Qué nos distingue - Títulos destacados */}
+              <motion.div 
+                className="bg-slate-800/50 backdrop-blur-sm rounded-2xl p-8 border border-slate-700/50 hover:border-purple-500/30 transition-all duration-300"
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 3.0, duration: 0.7 }}
+                whileHover={{ y: -4 }}
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
+                    <span className="text-xl">⭐</span>
+                  </div>
+                  <h3 className="text-3xl font-black text-white bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    Qué nos Distingue
+                  </h3>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
+                      <span className="text-white font-bold text-sm">✓</span>
+                    </div>
+                    <div>
+                      <h4 className="text-white font-bold text-lg">Calidad cinematográfica</h4>
+                      <p className="text-slate-400">Utilizamos equipos y técnicas de nivel profesional</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
+                      <span className="text-white font-bold text-sm">♥</span>
+                    </div>
+                    <div>
+                      <h4 className="text-white font-bold text-lg">Pasión por el detalle</h4>
+                      <p className="text-slate-400">Cuidamos todos los detalles de nuestras emisiones</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
+                      <span className="text-white font-bold text-sm">⚡</span>
+                    </div>
+                    <div>
+                      <h4 className="text-white font-bold text-lg">Enfoque personalizado</h4>
+                      <p className="text-slate-400">Cada proyecto refleja la visión exacta que buscas</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Compromiso de Excelencia - Título destacado */}
             <motion.div 
-              className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 shadow-2xl border border-slate-700"
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 3.0, duration: 0.7 }}
+              className="bg-gradient-to-r from-teal-900/20 to-cyan-900/20 rounded-2xl p-10 border border-teal-500/20 text-center"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 3.4, duration: 0.7 }}
+              whileHover={{ y: -4 }}
             >
-              <h3 className="text-2xl font-bold text-white mb-6">Qué nos Distingue</h3>
+              <h3 className="text-4xl md:text-5xl font-black mb-6 bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
+                Nuestro Compromiso de Excelencia
+              </h3>
               
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-r from-green-500 to-teal-500 rounded-lg flex items-center justify-center mt-1 flex-shrink-0">
-                    <span className="text-white font-bold text-lg">✓</span>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold mb-1">Calidad cinematográfica</h4>
-                    <p className="text-slate-400 text-sm">Utilizamos equipos y técnicas de nivel profesional</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-lg flex items-center justify-center mt-1 flex-shrink-0">
-                    <span className="text-white font-bold text-lg">♥</span>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold mb-1">Pasión por el detalle</h4>
-                    <p className="text-slate-400 text-sm">Cuidamos todos los detalles de nuestras emisiones</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mt-1 flex-shrink-0">
-                    <span className="text-white font-bold text-lg">⚡</span>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold mb-1">Enfoque personalizado</h4>
-                    <p className="text-slate-400 text-sm">Cada proyecto refleja la visión exacta que buscas</p>
-                  </div>
-                </div>
+              <p className="text-slate-300 text-lg leading-relaxed mb-6 max-w-4xl mx-auto">
+                Nuestro portafolio incluye proyectos para <strong className="text-teal-400">grandes marcas</strong>, 
+                <strong className="text-cyan-400"> pequeñas empresas</strong> y <strong className="text-purple-400">creadores independientes</strong>, 
+                siempre con el mismo compromiso de excelencia.
+              </p>
+              
+              <p className="text-2xl font-semibold text-white mb-8">
+                En Movida Deportiva TV, <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">tu historia merece ser contada de la mejor manera posible</span>
+              </p>
+              
+              {/* Botones - Diseño limpio */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/conocenos">
+                  <motion.button
+                    className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white px-8 py-3 rounded-xl font-semibold hover:from-teal-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    Conoce más sobre nosotros
+                  </motion.button>
+                </Link>
+                <motion.button
+                  className="border-2 border-teal-400 text-teal-400 px-8 py-3 rounded-xl font-semibold hover:bg-teal-400 hover:text-white transition-all duration-300"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => {
+                    const serviciosSection = document.getElementById('servicios-section');
+                    serviciosSection?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  Ver nuestros servicios
+                </motion.button>
               </div>
             </motion.div>
           </div>
-
-          {/* Nuestro portafolio */}
-          <motion.div 
-            className="bg-gradient-to-br from-teal-900/30 to-cyan-900/30 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-teal-700/50 max-w-4xl mx-auto text-center mb-8"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 3.2, duration: 0.7 }}
-          >
-            <motion.h3 
-              className="text-2xl font-bold text-white mb-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 3.4, duration: 0.6 }}
-            >
-              Nuestro Compromiso de Excelencia
-            </motion.h3>
-            <motion.p 
-              className="text-slate-300 leading-relaxed mb-6"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 3.6, duration: 0.6 }}
-            >
-              Nuestro portafolio incluye proyectos para <strong className="text-teal-400">grandes marcas</strong>, 
-              <strong className="text-cyan-400"> pequeñas empresas</strong> y <strong className="text-purple-400">creadores independientes</strong>, 
-              siempre con el mismo compromiso de excelencia.
-            </motion.p>
-            <motion.p 
-              className="text-xl font-semibold text-white mb-6"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 3.8, duration: 0.6 }}
-            >
-              En Movida Deportiva TV, <span className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">tu historia merece ser contada de la mejor manera posible</span>
-            </motion.p>
-            
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 4.0, duration: 0.6 }}
-            >
-              <Link to="/conocenos">
-                <motion.button
-                  className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white px-8 py-3 rounded-full font-semibold hover:from-teal-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-xl"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Conoce más sobre nosotros
-                </motion.button>
-              </Link>
-              <motion.button
-                className="bg-transparent border-2 border-teal-400 text-teal-400 px-8 py-3 rounded-full font-semibold hover:bg-teal-400 hover:text-white transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => {
-                  const serviciosSection = document.getElementById('servicios-section');
-                  serviciosSection?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                Ver nuestros servicios
-              </motion.button>
-            </motion.div>
-          </motion.div>
         </motion.section>
 
         {/* Sección de Colaboradores */}
