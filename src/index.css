@@ -80,3 +80,10 @@ details > summary { list-style: none; }
 .shadow-glow-cyan {
   box-shadow: 0 0 30px rgba(6, 182, 212, 0.4);
 }
+
+/* Prevent horizontal overflow */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
