@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -56,47 +56,6 @@ const Contacto: React.FC<ContactoProps> = () => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [autoSaveStatus, setAutoSaveStatus] = useState<'saving' | 'saved' | null>(null);
-
-  // AutoSave functionality
-  useEffect(() => {
-    const savedData = localStorage.getItem('contactForm');
-    if (savedData) {
-      try {
-        const { data, timestamp } = JSON.parse(savedData);
-        const now = Date.now();
-        const fifteenMinutes = 15 * 60 * 1000;
-        
-        if (now - timestamp < fifteenMinutes) {
-          setFormData(data);
-        } else {
-          localStorage.removeItem('contactForm');
-        }
-      } catch (error) {
-        localStorage.removeItem('contactForm');
-      }
-    }
-  }, []);
-
-  useEffect(() => {
-    const hasData = Object.values(formData).some(value => 
-      Array.isArray(value) ? value.length > 0 : Boolean(value)
-    );
-    
-    if (hasData) {
-      setAutoSaveStatus('saving');
-      const timer = setTimeout(() => {
-        localStorage.setItem('contactForm', JSON.stringify({
-          data: formData,
-          timestamp: Date.now()
-        }));
-        setAutoSaveStatus('saved');
-        setTimeout(() => setAutoSaveStatus(null), 2000);
-      }, 1000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [formData]);
 
   const serviciosDisponibles = [
     {
@@ -200,7 +159,6 @@ const Contacto: React.FC<ContactoProps> = () => {
       
       if (emailSent) {
         // ✅ Éxito - limpiar formulario y mostrar mensaje
-        localStorage.removeItem('contactForm');
         setShowSuccess(true);
         setFormData({
           nombre: '',
@@ -266,20 +224,6 @@ const Contacto: React.FC<ContactoProps> = () => {
               >
                 Solicita información sobre nuestros servicios audiovisuales profesionales
               </motion.p>
-
-              {/* AutoSave Indicator */}
-              <AnimatePresence>
-                {autoSaveStatus && (
-                  <motion.div
-                    className={`mt-4 text-sm ${autoSaveStatus === 'saving' ? 'text-yellow-400' : 'text-green-400'}`}
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                  >
-                    {autoSaveStatus === 'saving' ? '💾 Guardando...' : '✅ Datos guardados automáticamente'}
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
 
             {/* Formulario */}
@@ -653,7 +597,7 @@ const Contacto: React.FC<ContactoProps> = () => {
                     </div>
                     <div>
                       <div className="text-white font-semibold">Email</div>
-                      <div className="text-slate-400">info@movidadeportivatv.com</div>
+                      <div className="text-slate-400">movidadeportiva.direccion@gmail.com</div>
                     </div>
                   </div>
                   
@@ -663,7 +607,7 @@ const Contacto: React.FC<ContactoProps> = () => {
                     </div>
                     <div>
                       <div className="text-white font-semibold">Teléfono</div>
-                      <div className="text-slate-400">+34 666 123 456</div>
+                      <div className="text-slate-400">+34 640 92 52 25</div>
                     </div>
                   </div>
                   

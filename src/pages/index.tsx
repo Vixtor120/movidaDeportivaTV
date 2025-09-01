@@ -302,57 +302,6 @@ const Index: React.FC<IndexProps> = () => {
 
         </motion.section>
 
-        {/* Sección del reproductor de Twitch */}
-        <motion.section 
-          className="mb-20"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.4, duration: 0.8 }}
-        >
-          <motion.h2 
-            className="text-4xl md:text-5xl font-black text-white text-center mb-12"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.6, duration: 0.6 }}
-          >
-            Síguenos en <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Twitch</span>
-          </motion.h2>
-
-          <motion.div 
-            className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 1.8, duration: 0.7 }}
-          >
-            {/* Video Player */}
-            <div className="lg:col-span-2">
-              <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-slate-700">
-                <iframe
-                  src="https://player.twitch.tv/?channel=movidadeportivatv&parent=localhost&parent=127.0.0.1&parent=your-domain.com&autoplay=false"
-                  className="w-full h-80 lg:h-96"
-                  frameBorder="0"
-                  allowFullScreen={true}
-                  scrolling="no"
-                  title="Twitch Stream - Movida Deportiva TV"
-                ></iframe>
-              </div>
-            </div>
-
-            {/* Chat */}
-            <div className="lg:col-span-1">
-              <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-slate-700 h-80 lg:h-96">
-                <iframe
-                  src="https://www.twitch.tv/embed/movidadeportivatv/chat?parent=localhost&parent=127.0.0.1&parent=your-domain.com&darkpopout"
-                  className="w-full h-full"
-                  frameBorder="0"
-                  scrolling="no"
-                  title="Twitch Chat - Movida Deportiva TV"
-                ></iframe>
-              </div>
-            </div>
-          </motion.div>
-        </motion.section>
-
         {/* Sección Conócenos - Diseño moderno y sencillo */}
         <motion.section
           className="mb-20"

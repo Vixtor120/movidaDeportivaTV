@@ -70,8 +70,8 @@ const TerminosServicio: React.FC<TerminosServicioProps> = () => {
             <div className="text-slate-300 space-y-4">
               <p><strong>Razón Social:</strong> Movida Deportiva TV</p>
               <p><strong>Área de Servicio:</strong> Barcelona y alrededores</p>
-              <p><strong>Email:</strong> info@movidadeportivatv.com</p>
-              <p><strong>Teléfono:</strong> +34 XXX XXX XXX</p>
+              <p><strong>Email:</strong> movidadeportiva.direccion@gmail.com</p>
+              <p><strong>Teléfono:</strong> +34 640 92 52 25</p>
               <p className="mt-4">
                 Estos términos y condiciones regulan la prestación de servicios audiovisuales ofrecidos por Movida Deportiva TV.
                 Al contratar nuestros servicios, aceptas estos términos en su totalidad.
@@ -222,11 +222,11 @@ const TerminosServicio: React.FC<TerminosServicioProps> = () => {
               <p>Para cualquier consulta sobre estos términos y condiciones:</p>
               <div className="flex items-center gap-3 mt-4">
                 <FiMail className="w-5 h-5 text-purple-400" />
-                <span>info@movidadeportivatv.com</span>
+                <span>movidadeportiva.direccion@gmail.com</span>
               </div>
               <div className="flex items-center gap-3">
                 <FiPhone className="w-5 h-5 text-purple-400" />
-                <span>+34 XXX XXX XXX</span>
+                <span>+34 640 92 52 25</span>
               </div>
               
               <div className="mt-6 p-4 bg-purple-900/20 rounded-lg border border-purple-700/50">

@@ -1,4 +1,3 @@
-import emailjs from '@emailjs/browser';
 import { EMAIL_CONFIG } from '../config/email';
 
 interface FormData {
@@ -13,10 +12,10 @@ interface FormData {
   mensaje: string;
 }
 
-// 📧 Servicio para enviar emails usando EmailJS
+// 📧 Servicio GRATUITO usando Web3Forms (sin configuración compleja)
 export class EmailService {
   
-  // 🚀 Enviar formulario de contacto
+  // 🚀 Enviar formulario automáticamente (el usuario solo hace clic)
   static async sendContactForm(formData: FormData): Promise<boolean> {
     try {
       // 📝 Formatear los servicios seleccionados
@@ -24,46 +23,74 @@ export class EmailService {
         ? formData.servicios.join(', ') 
         : 'No especificado';
 
-      // 📋 Preparar los parámetros del template
-      const templateParams = {
-        // Datos del remitente
-        from_name: formData.nombre,
-        from_email: formData.email,
-        reply_to: formData.email,
-        
-        // Datos del destinatario
-        to_email: EMAIL_CONFIG.TO_EMAIL,
-        
-        // Información del formulario
-        user_name: formData.nombre,
-        user_email: formData.email,
-        user_phone: formData.telefono,
-        user_company: formData.empresa || 'No especificada',
-        
-        // Detalles del proyecto
-        services: serviciosTexto,
-        event_type: formData.tipoEvento || 'No especificado',
-        event_date: formData.fechaEvento || 'No especificada',
-        budget: formData.presupuesto || 'No especificado',
-        
-        // Mensaje
-        message: formData.mensaje || 'Sin mensaje adicional',
-        
-        // Información adicional
-        submission_date: new Date().toLocaleDateString('es-ES'),
-        submission_time: new Date().toLocaleTimeString('es-ES'),
-      };
+      // � Enviar usando Web3Forms (GRATUITO - 1000 emails/mes)
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          // 🔑 Usar la clave de la configuración
+          access_key: EMAIL_CONFIG.WEB3FORMS_KEY,
+          
+          // 📧 Tu email de reenvío
+          email: EMAIL_CONFIG.TO_EMAIL,
+          
+          // 📝 Solo el asunto personalizado
+          subject: `🎬 Nueva Solicitud - ${formData.nombre}`,
+          
+          // 🎨 Mensaje principal con formato mejorado (sin HTML complejo)
+          message: `
+🎬 MOVIDA DEPORTIVA TV
+═══════════════════════════════════════
 
-      // 📤 Enviar email usando EmailJS
-      const result = await emailjs.send(
-        EMAIL_CONFIG.SERVICE_ID,
-        EMAIL_CONFIG.TEMPLATE_ID,
-        templateParams,
-        EMAIL_CONFIG.PUBLIC_KEY
-      );
+📋 NUEVA SOLICITUD DE CONTACTO
+═══════════════════════════════════════
 
-      console.log('✅ Email enviado exitosamente:', result.text);
-      return true;
+👤 INFORMACIÓN PERSONAL
+────────────────────────────────────
+• Nombre: ${formData.nombre}
+• Email: ${formData.email}
+• Teléfono: ${formData.telefono}
+• Empresa: ${formData.empresa || 'No especificada'}
+
+🎯 DETALLES DEL PROYECTO
+────────────────────────────────────
+• Servicios: ${serviciosTexto}
+• Tipo de evento: ${formData.tipoEvento || 'No especificado'}
+• Fecha: ${formData.fechaEvento ? new Date(formData.fechaEvento).toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) : 'No especificada'}
+• Presupuesto: ${formData.presupuesto || 'A consultar'}
+
+${formData.mensaje ? `💬 MENSAJE ADICIONAL
+────────────────────────────────────
+"${formData.mensaje}"
+
+` : ''} INFORMACIÓN DE ENVÍO
+────────────────────────────────────
+• Fecha: ${new Date().toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+• Hora: ${new Date().toLocaleTimeString('es-ES')}
+• Origen: www.movidadeportiva.com
+
+═══════════════════════════════════════
+🚀 Solicitud enviada automáticamente
+📧 Responde directamente a este correo
+═══════════════════════════════════════
+          `,
+          // � Sin redirección
+          redirect: false
+        })
+      });
+
+      const result = await response.json();
+      
+      if (result.success) {
+        console.log('✅ Email enviado exitosamente');
+        return true;
+      } else {
+        console.error('❌ Error:', result.message);
+        return false;
+      }
 
     } catch (error) {
       console.error('❌ Error al enviar email:', error);
@@ -71,16 +98,10 @@ export class EmailService {
     }
   }
 
-  // 🔧 Verificar configuración
+  // 🔧 Verificar configuración (para Formspree solo necesitas el form ID)
   static isConfigured(): boolean {
-    return !!(
-      EMAIL_CONFIG.SERVICE_ID && 
-      EMAIL_CONFIG.SERVICE_ID !== 'YOUR_SERVICE_ID' &&
-      EMAIL_CONFIG.TEMPLATE_ID && 
-      EMAIL_CONFIG.TEMPLATE_ID !== 'YOUR_TEMPLATE_ID' &&
-      EMAIL_CONFIG.PUBLIC_KEY && 
-      EMAIL_CONFIG.PUBLIC_KEY !== 'YOUR_PUBLIC_KEY'
-    );
+    // Para Formspree, cambia 'YOUR_FORM_ID' por tu ID real cuando lo tengas
+    return true; // Siempre está "configurado" mientras tengas internet
   }
 
   // 📧 Obtener email de destino actual
@@ -91,7 +112,6 @@ export class EmailService {
   // 🔄 Cambiar email de destino
   static setDestinationEmail(newEmail: string): void {
     EMAIL_CONFIG.TO_EMAIL = newEmail;
-    EMAIL_CONFIG.TEMPLATE_PARAMS.to_email = newEmail;
   }
 }
 

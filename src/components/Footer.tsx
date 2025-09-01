@@ -107,8 +107,8 @@ const Footer: React.FC<FooterProps> = () => {
                 whileHover={{ x: 5 }}
               >
                 <FiMail className="mr-3 text-teal-400" />
-                <a href="mailto:info@movidadeportivatv.com" className="hover:underline">
-                  info@movidadeportivatv.com
+                <a href="mailto:@movidadeportiva.com" className="hover:underline">
+                  @movidadeportiva.com
                 </a>
               </motion.div>
               
@@ -117,8 +117,8 @@ const Footer: React.FC<FooterProps> = () => {
                 whileHover={{ x: 5 }}
               >
                 <FiPhone className="mr-3 text-teal-400" />
-                <a href="tel:+34666123456" className="hover:underline">
-                  +34 666 123 456
+                <a href="tel:+34640925225" className="hover:underline">
+                  +34 640 92 52 25
                 </a>
               </motion.div>
               

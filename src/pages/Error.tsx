@@ -156,11 +156,11 @@ const Error: React.FC<ErrorProps> = ({
               <div className="space-y-2 text-slate-400">
                 <p className="flex items-center gap-2">
                   <span>📧</span>
-                  info@movidadeportivatv.com
+                  movidadeportiva.direccion@gmail.com
                 </p>
                 <p className="flex items-center gap-2">
                   <span>📞</span>
-                  +34 666 123 456
+                  +34 640 92 52 25
                 </p>
                 <p className="text-sm">
                   Si el problema persiste, no dudes en contactarnos.

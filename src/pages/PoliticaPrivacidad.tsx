@@ -70,8 +70,8 @@ const PoliticaPrivacidad: React.FC<PoliticaPrivacidadProps> = () => {
             <div className="text-slate-300 space-y-4">
               <p><strong>Razón Social:</strong> Movida Deportiva TV</p>
               <p><strong>Área de Servicio:</strong> Barcelona y alrededores</p>
-              <p><strong>Email:</strong> info@movidadeportivatv.com</p>
-              <p><strong>Teléfono:</strong> +34 XXX XXX XXX</p>
+              <p><strong>Email:</strong> movidadeportiva.direccion@gmail.com</p>
+              <p><strong>Teléfono:</strong> +34 640 92 52 25</p>
             </div>
           </section>
 
@@ -179,7 +179,7 @@ const PoliticaPrivacidad: React.FC<PoliticaPrivacidadProps> = () => {
               
               <div className="mt-6 p-4 bg-blue-900/20 rounded-lg border border-blue-700/50">
                 <p className="text-blue-300">
-                  <strong>Para ejercer tus derechos:</strong> Contacta con nosotros en info@movidadeportivatv.com
+                  <strong>Para ejercer tus derechos:</strong> Contacta con nosotros en movidadeportiva.direccion@gmail.com
                 </p>
               </div>
             </div>
@@ -207,11 +207,11 @@ const PoliticaPrivacidad: React.FC<PoliticaPrivacidadProps> = () => {
               <p>Para cualquier consulta sobre esta política de privacidad o el tratamiento de tus datos:</p>
               <div className="flex items-center gap-3 mt-4">
                 <FiMail className="w-5 h-5 text-teal-400" />
-                <span>info@movidadeportivatv.com</span>
+                <span>movidadeportiva.direccion@gmail.com</span>
               </div>
               <div className="flex items-center gap-3">
                 <FiPhone className="w-5 h-5 text-teal-400" />
-                <span>+34 XXX XXX XXX</span>
+                <span>+34 640 92 52 25</span>
               </div>
               
               <div className="mt-6 p-4 bg-teal-900/20 rounded-lg border border-teal-700/50">

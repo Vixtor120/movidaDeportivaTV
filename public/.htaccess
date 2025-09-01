@@ -1,0 +1,7 @@
+# Configuración para React Router SPA
+RewriteEngine On
+
+# Redirigir todo a index.html excepto archivos existentes
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ /index.html [QSA,L]
